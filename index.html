@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,36 +7,62 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1>Matheus Bohrer</h1>
-    <p>Estudante de Desenvolvimento de Sistemas</p>
+  <div class="sidebar">
+    <div class="profile">
+      <img src="/images/dean.jpg" alt="Foto de Perfil">
+      <h2>Matheus Bohrer</h2>
+      <p>Desenvolvedor de Sistemas</p>
+    </div>
     <nav>
-      <a href="#projetos">Projetos</a>
-      <a href="#contato">Contato</a>
+      <a href="#home" class="active">🏠 Home</a>
+      <a href="#projects">💻 Projects</a>
+      <a href="#about">ℹ️ About</a>
+      <a href="#contact">📩 Contact</a>
     </nav>
-  </header>
+  </div>
 
-  <section id="projetos">
-    <h2>Projetos</h2>
+  <div class="content">
+    <section id="home">
+      <h1>Bem-vindo</h1>
+      <p>Esse é meu portfólio profissional!</p>
+    </section>
 
-    <div class="projeto">
-      <h3>Sistema de Cadastro</h3>
-      <p>Aplicação web feita em PHP e MySQL para cadastro de usuários.</p>
-      <a href="https://github.com/matheusbohrer/projeto1" target="_blank">Ver no GitHub</a>
-    </div>
+    <section id="projects">
+      <h1>Projetos</h1>
+      <p>Lista dos projetos que já desenvolvi...</p>
+    </section>
 
-    <div class="projeto">
-      <h3>API de Trens</h3>
-      <p>API REST feita em Node.js para consulta de horários de trens urbanos.</p>
-      <a href="https://github.com/matheusbohrer/projeto2" target="_blank">Ver no GitHub</a>
-    </div>
+    <section id="about">
+      <h1>Sobre mim</h1>
+      <p>Sou técnico em desenvolvimento de sistemas...</p>
+    </section>
 
-  </section>
+    <section id="contact">
+      <h1>Contato</h1>
+      <p>Email: matheus@email.com</p>
+    </section>
+  </div>
 
-  <footer id="contato">
-    <h2>Contato</h2>
-    <p>Email: seuemail@gmail.com</p>
-    <p>LinkedIn: <a href="https://linkedin.com/in/seuusuario">linkedin.com/in/seuusuario</a></p>
-  </footer>
+  <script>
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.sidebar nav a');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (pageYOffset >= sectionTop - 100) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + current) {
+          link.classList.add('active');
+        }
+      });
+    });
+  </script>
 </body>
 </html>
